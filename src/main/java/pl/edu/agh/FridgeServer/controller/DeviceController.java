@@ -3,10 +3,7 @@ package pl.edu.agh.FridgeServer.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.edu.agh.FridgeServer.entity.Device;
 import pl.edu.agh.FridgeServer.entity.User;
 import pl.edu.agh.FridgeServer.model.SimpleMessage;
@@ -32,20 +29,24 @@ public class DeviceController {
 
 
     @PostMapping("/addDevice/{number}")
-    public ResponseEntity<SimpleMessage> addDeviceToUser(@PathVariable String number) {
-
+    public ResponseEntity<SimpleMessage> addDeviceToUser(
+            @PathVariable String number,
+            @RequestBody SimpleMessage deviceInfo
+    ) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
 
         User user = fridgeService.findUserByUserName(userName);
 
-        Device device = new Device(number, number);
+        Device device = new Device(number, deviceInfo.getInfo());
         device.setUser(user);
 
         fridgeService.saveDevice(device);
         logger.info("Successfully created Device with number: " + device.getId());
 
-        return ResponseEntity.status(200).body(new SimpleMessage(("Successfully created device")));
+        return ResponseEntity.status(200).body(
+                new SimpleMessage(("Successfully created device: " + deviceInfo.getInfo()))
+        );
     }
 
     @GetMapping("/devices")

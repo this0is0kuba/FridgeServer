@@ -4,6 +4,8 @@ public class SimpleMessage {
 
     private String info;
 
+    public SimpleMessage() {}
+
     public SimpleMessage(String info) {
         this.info = info;
     }

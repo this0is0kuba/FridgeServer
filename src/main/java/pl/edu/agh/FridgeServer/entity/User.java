@@ -1,11 +1,9 @@
 package pl.edu.agh.FridgeServer.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
