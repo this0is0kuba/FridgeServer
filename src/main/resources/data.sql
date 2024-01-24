@@ -15,3 +15,10 @@ values
     (1, 2),
     (1, 3),
     (2, 1);
+
+insert into devices
+values
+    (1, 'my_device_1', '00:2A:E6:3E:FD:E1'),
+    (1, 'fridge_1', '00:0A:E6:54:FA:A1'),
+    (1, 'fridge_2', '00:11:A6:5B:14:A2'),
+    (3, 'freezer', 'BB:AA:A4:15:1F:FF')

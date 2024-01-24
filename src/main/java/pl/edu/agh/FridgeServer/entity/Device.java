@@ -16,9 +16,8 @@ public class Device {
     @Column(name = "id")
     private String id;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    @Column(name = "start_date")
-    private LocalDateTime startDate;
+    @Column(name = "device_name")
+    private String deviceName;
 
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
@@ -34,9 +33,9 @@ public class Device {
 
     public Device() {}
 
-    public Device(String id, LocalDateTime startDate) {
+    public Device(String id, String deviceName) {
         this.id = id;
-        this.startDate = startDate;
+        this.deviceName = deviceName;
     }
 
     public String getId() {
@@ -47,12 +46,12 @@ public class Device {
         this.id = id;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public String getDeviceName() {
+        return deviceName;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 
     public User getUser() {
@@ -85,8 +84,10 @@ public class Device {
     @Override
     public String toString() {
         return "Device{" +
-                "id=" + id +
-                ", startDate=" + startDate +
+                "id='" + id + '\'' +
+                ", deviceName='" + deviceName + '\'' +
+                ", user=" + user +
+                ", history=" + history +
                 '}';
     }
 }
