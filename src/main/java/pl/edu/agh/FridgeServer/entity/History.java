@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 
@@ -29,16 +28,10 @@ public class History {
     @Column(name = "temperature")
     @Min(-100)
     @Max(200)
-    private double temp;
+    private Double temp;
 
-    @Column(name = "humidity")
-    @Min(0)
-    @Max(100)
-    private double humidity;
-
-    @Column(name = "open_door")
-    @NotNull(message = "is required")
-    private boolean openDoor;
+    @Column(name = "distance")
+    private Double distance;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "date")
@@ -51,10 +44,10 @@ public class History {
 
     public History() {}
 
-    public History(double temp, double humidity, boolean openDoor) {
+    public History(Double temp, Double distance, LocalDateTime date) {
         this.temp = temp;
-        this.humidity = humidity;
-        this.openDoor = openDoor;
+        this.distance = distance;
+        this.date = date;
     }
 
     public int getId() {
@@ -65,28 +58,28 @@ public class History {
         this.id = id;
     }
 
-    public double getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
-    public void setTemp(double temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 
-    public double getHumidity() {
-        return humidity;
+    public Double getDistance() {
+        return distance;
     }
 
-    public void setHumidity(double humidity) {
-        this.humidity = humidity;
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
-    public boolean isOpenDoor() {
-        return openDoor;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setOpenDoor(boolean openDoor) {
-        this.openDoor = openDoor;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
     public Device getDevice() {
@@ -102,8 +95,8 @@ public class History {
         return "History{" +
                 "id=" + id +
                 ", temp=" + temp +
-                ", humidity=" + humidity +
-                ", openDoor=" + openDoor +
+                ", distance=" + distance +
+                ", date=" + date +
                 '}';
     }
 }

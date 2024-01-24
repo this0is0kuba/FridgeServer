@@ -9,9 +9,6 @@ import pl.edu.agh.FridgeServer.entity.User;
 import pl.edu.agh.FridgeServer.model.SimpleMessage;
 import pl.edu.agh.FridgeServer.service.FridgeService;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 

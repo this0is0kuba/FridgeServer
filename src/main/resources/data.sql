@@ -21,4 +21,30 @@ values
     (1, 'my_device_1', '00:2A:E6:3E:FD:E1'),
     (1, 'fridge_1', '00:0A:E6:54:FA:A1'),
     (1, 'fridge_2', '00:11:A6:5B:14:A2'),
-    (3, 'freezer', 'BB:AA:A4:15:1F:FF')
+    (3, 'freezer', 'BB:AA:A4:15:1F:FF');
+
+insert into history
+values
+    (123.16, nextval('history_id_sequence'), NULL, '2024-01-24 22:27:52.539065', '00:2A:E6:3E:FD:E1'),
+    (123.16, nextval('history_id_sequence'), NULL, '2024-01-24 22:37:52.539065', '00:2A:E6:3E:FD:E1'),
+    (10.12, nextval('history_id_sequence'), NULL, '2024-01-24 22:47:52.539065', '00:2A:E6:3E:FD:E1'),
+    (10.12, nextval('history_id_sequence'), NULL, '2024-01-24 22:57:52.539065', '00:2A:E6:3E:FD:E1'),
+    (NULL, nextval('history_id_sequence'), 6.04, '2024-01-24 22:57:52.539065', '00:2A:E6:3E:FD:E1'),
+    (NULL, nextval('history_id_sequence'), 6.02, '2024-01-24 22:57:52.539065', '00:2A:E6:3E:FD:E1'),
+    (NULL, nextval('history_id_sequence'), 5.03, '2024-01-24 22:57:52.539065', '00:2A:E6:3E:FD:E1'),
+
+    (123.16, nextval('history_id_sequence'), NULL, '2024-01-24 22:27:52.539065', '00:0A:E6:54:FA:A1'),
+    (123.16, nextval('history_id_sequence'), NULL, '2024-01-24 22:37:52.539065', '00:0A:E6:54:FA:A1'),
+    (10.12, nextval('history_id_sequence'), NULL, '2024-01-24 22:47:52.539065', '00:0A:E6:54:FA:A1'),
+    (10.12, nextval('history_id_sequence'), NULL, '2024-01-24 22:57:52.539065', '00:0A:E6:54:FA:A1'),
+    (NULL, nextval('history_id_sequence'), 6.04, '2024-01-24 22:57:52.539065', '00:0A:E6:54:FA:A1'),
+    (NULL, nextval('history_id_sequence'), 6.02, '2024-01-24 22:57:52.539065', '00:0A:E6:54:FA:A1'),
+    (NULL, nextval('history_id_sequence'), 5.03, '2024-01-24 22:57:52.539065', '00:0A:E6:54:FA:A1'),
+
+    (123.16, nextval('history_id_sequence'), NULL, '2024-01-24 22:27:52.539065', 'BB:AA:A4:15:1F:FF'),
+    (123.16, nextval('history_id_sequence'), NULL, '2024-01-24 22:37:52.539065', 'BB:AA:A4:15:1F:FF'),
+    (10.12, nextval('history_id_sequence'), NULL, '2024-01-24 22:47:52.539065', 'BB:AA:A4:15:1F:FF'),
+    (10.12, nextval('history_id_sequence'), NULL, '2024-01-24 22:57:52.539065', 'BB:AA:A4:15:1F:FF'),
+    (NULL, nextval('history_id_sequence'), 6.04, '2024-01-24 22:57:52.539065', 'BB:AA:A4:15:1F:FF'),
+    (NULL, nextval('history_id_sequence'), 6.02, '2024-01-24 22:57:52.539065', 'BB:AA:A4:15:1F:FF'),
+    (NULL, nextval('history_id_sequence'), 5.03, '2024-01-24 22:57:52.539065', 'BB:AA:A4:15:1F:FF');

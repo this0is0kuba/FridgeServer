@@ -6,4 +6,5 @@ import pl.edu.agh.FridgeServer.entity.Device;
 public interface DeviceDao {
 
     void save(Device device);
+    Device findById(String id);
 }

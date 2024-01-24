@@ -86,8 +86,6 @@ public class Device {
         return "Device{" +
                 "id='" + id + '\'' +
                 ", deviceName='" + deviceName + '\'' +
-                ", user=" + user +
-                ", history=" + history +
                 '}';
     }
 }
