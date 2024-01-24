@@ -33,4 +33,10 @@ public class AuthenticationController {
 
         return ResponseEntity.status(200).body(currentUser);
     }
+
+    @GetMapping("/session")
+    public ResponseEntity<SimpleMessage> checkToken() {
+
+        return ResponseEntity.status(200).body(new SimpleMessage("Token is valid"));
+    }
 }

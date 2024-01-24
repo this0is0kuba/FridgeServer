@@ -44,11 +44,11 @@ public class RegistrationController {
         User existingUser = fridgeService.findUserByUserName(user.getUserName());
 
         if(existingUser != null)
-            return ResponseEntity.status(400).body(new SimpleMessage("User with this name already exists."));
+            return ResponseEntity.status(400).body(new SimpleMessage("User with this name already exists"));
 
         fridgeService.saveUser(user);
 
         logger.info("Successfully created user: " + user.getUserName());
-        return ResponseEntity.status(201).body(new SimpleMessage("The user has been created correctly."));
+        return ResponseEntity.status(201).body(new SimpleMessage("The user has been created correctly"));
     }
 }
