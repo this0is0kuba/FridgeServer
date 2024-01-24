@@ -50,13 +50,6 @@ public class User {
     @Size(min = 1, message = "is required")
     private String lastName;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
-    @Column(name = "date_of_birth")
-    private LocalDate dateOfBirth;
-
-    @Column(name = "gender")
-    private Boolean gender;
-
     @Column(name = "enabled")
     private boolean enabled = true;
 
@@ -81,14 +74,12 @@ public class User {
 
     public User() {}
 
-    public User(String userName, String password, String email, String firstName, String lastName, LocalDate dateOfBirth, Boolean gender) {
+    public User(String userName, String password, String email, String firstName, String lastName) {
         this.userName = userName;
         this.password = password;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
     }
 
     public int getId() {
@@ -137,22 +128,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public Boolean getGender() {
-        return gender;
-    }
-
-    public void setGender(Boolean gender) {
-        this.gender = gender;
     }
 
     public boolean isEnabled() {
@@ -210,8 +185,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", gender=" + gender +
                 ", enabled=" + enabled +
                 '}';
     }
