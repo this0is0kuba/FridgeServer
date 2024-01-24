@@ -7,8 +7,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.edu.agh.FridgeServer.dao.DeviceDao;
 import pl.edu.agh.FridgeServer.dao.RoleDao;
 import pl.edu.agh.FridgeServer.dao.UserDao;
+import pl.edu.agh.FridgeServer.entity.Device;
 import pl.edu.agh.FridgeServer.entity.Role;
 import pl.edu.agh.FridgeServer.entity.User;
 
@@ -19,13 +21,15 @@ public class FridgeServiceImpl implements FridgeService {
 
     private UserDao userDao;
     private RoleDao roleDao;
+    private DeviceDao deviceDao;
     private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    FridgeServiceImpl(UserDao userDAO, RoleDao roleDao, BCryptPasswordEncoder passwordEncoder) {
+    FridgeServiceImpl(UserDao userDAO, RoleDao roleDao, DeviceDao deviceDao, BCryptPasswordEncoder passwordEncoder) {
 
         this.userDao = userDAO;
         this.roleDao = roleDao;
+        this.deviceDao = deviceDao;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -45,6 +49,13 @@ public class FridgeServiceImpl implements FridgeService {
         user.setRoles(Collections.singletonList(role));
 
         userDao.save(user);
+    }
+
+    @Override
+    @Transactional
+    public void saveDevice(Device device) {
+
+        deviceDao.save(device);
     }
 
     @Override

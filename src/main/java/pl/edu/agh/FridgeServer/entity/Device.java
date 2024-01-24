@@ -14,16 +14,7 @@ public class Device {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(
-            name = "device_id_sequence",
-            sequenceName = "device_id_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "device_id_sequence"
-    )
-    private int id;
+    private String id;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "start_date")
@@ -43,15 +34,16 @@ public class Device {
 
     public Device() {}
 
-    public Device(LocalDateTime startDate) {
+    public Device(String id, LocalDateTime startDate) {
+        this.id = id;
         this.startDate = startDate;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

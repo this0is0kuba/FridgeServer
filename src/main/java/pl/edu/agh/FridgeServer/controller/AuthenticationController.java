@@ -11,7 +11,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import pl.edu.agh.FridgeServer.entity.User;
 import pl.edu.agh.FridgeServer.model.CustomResponseBody;
-import pl.edu.agh.FridgeServer.model.SimpleMessage;
 import pl.edu.agh.FridgeServer.service.FridgeService;
 
 import java.util.Date;
