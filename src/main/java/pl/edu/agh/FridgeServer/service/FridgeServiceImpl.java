@@ -74,6 +74,16 @@ public class FridgeServiceImpl implements FridgeService {
     }
 
     @Override
+    @Transactional
+    public void deleteDevice(String deviceId) {
+
+        Device device = findDeviceById(deviceId);
+
+        if(device != null)
+            deviceDao.delete(device);
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         User user = userDao.findByName(username);

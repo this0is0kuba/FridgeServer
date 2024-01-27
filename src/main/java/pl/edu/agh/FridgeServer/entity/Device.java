@@ -27,7 +27,7 @@ public class Device {
     @JsonIgnore
     @OneToMany(
             mappedBy = "device",
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+            cascade = CascadeType.ALL
     )
     private List<History> history;
 

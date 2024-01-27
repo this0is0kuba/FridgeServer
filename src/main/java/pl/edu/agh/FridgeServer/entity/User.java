@@ -54,7 +54,7 @@ public class User {
     @JsonIgnore
     @OneToMany(
             mappedBy = "user",
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH} // CascadeType.PERSIST :(
     )
     private List<Device> devices;
 

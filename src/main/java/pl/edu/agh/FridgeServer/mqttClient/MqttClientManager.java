@@ -66,6 +66,7 @@ public class MqttClientManager {
     private void setCallback() {
 
         sampleClient.setCallback(new MqttCallback() {
+
             @Override
             public void connectionLost(Throwable cause) {
                 System.out.println("Connection lost");
@@ -96,12 +97,17 @@ public class MqttClientManager {
         switch (subTopic) {
             case "temp" -> saveTemp(deviceId, Double.parseDouble(message));
             case "distance" -> saveDistance(deviceId, Double.parseDouble(message));
+            case "delete" -> deleteDevice(deviceId);
         }
     }
 
     private void saveTemp(String deviceId, Double temp) {
 
         Device device = fridgeService.findDeviceById(deviceId);
+
+        if(device == null)
+            return;
+
         LocalDateTime localDateTime = LocalDateTime.now();
 
         History history = new History(temp, null, localDateTime);
@@ -115,11 +121,19 @@ public class MqttClientManager {
     private void saveDistance(String deviceId, Double distance) {
 
         Device device = fridgeService.findDeviceById(deviceId);
+
+        if(device == null)
+            return;
+
         LocalDateTime localDateTime = LocalDateTime.now();
 
         History history = new History(null, distance, localDateTime);
         history.setDevice(device);
 
         fridgeService.saveHistory(history);
+    }
+
+    private void deleteDevice(String deviceId) {
+        fridgeService.deleteDevice(deviceId);
     }
 }

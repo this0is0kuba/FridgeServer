@@ -5,7 +5,6 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.edu.agh.FridgeServer.entity.Device;
-import pl.edu.agh.FridgeServer.entity.User;
 
 @Repository
 public class DeviceDaoImpl implements DeviceDao {
@@ -39,5 +38,10 @@ public class DeviceDaoImpl implements DeviceDao {
         }
 
         return device;
+    }
+
+    @Override
+    public void delete(Device device) {
+        entityManager.remove(device);
     }
 }

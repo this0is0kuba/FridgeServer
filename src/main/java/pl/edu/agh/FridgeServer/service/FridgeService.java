@@ -12,4 +12,5 @@ public interface FridgeService extends UserDetailsService {
     void saveUser(User user);
     void saveDevice(Device device);
     void saveHistory(History history);
+    void deleteDevice(String deviceId);
 }

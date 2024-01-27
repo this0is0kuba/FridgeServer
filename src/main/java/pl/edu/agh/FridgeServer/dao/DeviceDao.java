@@ -7,4 +7,5 @@ public interface DeviceDao {
 
     void save(Device device);
     Device findById(String id);
+    void delete(Device device);
 }

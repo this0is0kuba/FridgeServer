@@ -1,5 +1,6 @@
 package pl.edu.agh.FridgeServer.controller;
 
+import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -44,6 +45,32 @@ public class DeviceController {
         return ResponseEntity.status(200).body(
                 new SimpleMessage(("Successfully created device: " + deviceInfo.getInfo()))
         );
+    }
+
+    @DeleteMapping("/deleteDevice/{number}")
+    public ResponseEntity<SimpleMessage> deleteDevice(
+            @PathVariable String number
+    ) {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
+        User user = fridgeService.findUserByUserName(userName);
+
+        boolean checkPermission = false;
+
+        for (Device device: user.getDevices()) {
+
+            if(device.getId().equals(number)) {
+                checkPermission = true;
+                break;
+            }
+        }
+
+        if(!checkPermission)
+            return ResponseEntity.status(403).body(null);
+
+        fridgeService.deleteDevice(number);
+        return ResponseEntity.status(200).body(new SimpleMessage("Device deleted successfully"));
     }
 
     @GetMapping("/devices")
