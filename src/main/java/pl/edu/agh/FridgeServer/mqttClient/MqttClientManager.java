@@ -80,9 +80,8 @@ public class MqttClientManager {
                 String[] topicArray = topic.split("/");
 
                 String deviceId = topicArray[1];
-                String subTopic = topicArray[2];
 
-                saveData(deviceId, subTopic, new String(message.getPayload()));
+                saveData(deviceId, new String(message.getPayload()));
             }
 
             @Override
@@ -92,13 +91,15 @@ public class MqttClientManager {
         });
     }
 
-    private void saveData(String deviceId, String subTopic, String message) {
+    private void saveData(String deviceId, String message) {
 
-        switch (subTopic) {
-            case "temp" -> saveTemp(deviceId, Double.parseDouble(message));
-            case "door" -> saveInfoAboutDoor(deviceId, Boolean.parseBoolean(message));
-            case "delete" -> deleteDevice(deviceId);
-        }
+        String[] data = message.split(",");
+
+        Double temp = Double.parseDouble(data[0]);
+        Boolean closedDoor = Boolean.parseBoolean(data[1]);
+
+        saveTemp(deviceId, temp);
+        saveInfoAboutDoor(deviceId, closedDoor);
     }
 
     private void saveTemp(String deviceId, Double temp) {
@@ -112,8 +113,6 @@ public class MqttClientManager {
 
         History history = new History(temp, null, localDateTime);
         history.setDevice(device);
-
-        System.out.println(history);
 
         fridgeService.saveHistory(history);
     }
@@ -131,9 +130,5 @@ public class MqttClientManager {
         history.setDevice(device);
 
         fridgeService.saveHistory(history);
-    }
-
-    private void deleteDevice(String deviceId) {
-        fridgeService.deleteDevice(deviceId);
     }
 }

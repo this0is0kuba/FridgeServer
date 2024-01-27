@@ -31,16 +31,21 @@ public class DeviceController {
             @PathVariable String number,
             @RequestBody SimpleMessage deviceInfo
     ) {
+        Device device = fridgeService.findDeviceById(number);
+
+        if(device != null)
+            return ResponseEntity.status(403).body(null);
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
 
         User user = fridgeService.findUserByUserName(userName);
 
-        Device device = new Device(number, deviceInfo.getInfo());
-        device.setUser(user);
+        Device newDevice = new Device(number, deviceInfo.getInfo());
+        newDevice.setUser(user);
 
-        fridgeService.saveDevice(device);
-        logger.info("Successfully created Device with number: " + device.getId());
+        fridgeService.saveDevice(newDevice);
+        logger.info("Successfully created Device with number: " + newDevice.getId());
 
         return ResponseEntity.status(200).body(
                 new SimpleMessage(("Successfully created device: " + deviceInfo.getInfo()))

@@ -25,13 +25,13 @@ values
 
 insert into history
 values
-    (true, nextval('history_id_sequence'), NULL, '2024-01-24 22:27:52.539065', '00:2A:E6:3E:FD:E1'),
-    (true, nextval('history_id_sequence'), NULL, '2024-01-24 22:37:52.539065', '00:2A:E6:3E:FD:E1'),
-    (true, nextval('history_id_sequence'), NULL, '2024-01-24 22:47:52.539065', '00:2A:E6:3E:FD:E1'),
-    (false, nextval('history_id_sequence'), NULL, '2024-01-24 22:57:52.539065', '00:2A:E6:3E:FD:E1'),
-    (NULL, nextval('history_id_sequence'), 6.04, '2024-01-24 22:27:22.539065', '00:2A:E6:3E:FD:E1'),
-    (NULL, nextval('history_id_sequence'), 6.02, '2024-01-24 22:28:52.539065', '00:2A:E6:3E:FD:E1'),
-    (NULL, nextval('history_id_sequence'), 5.03, '2024-01-24 22:29:52.539065', '00:2A:E6:3E:FD:E1'),
+    (true, nextval('history_id_sequence'), 4.03, '2024-01-24 22:27:52.539065', '00:2A:E6:3E:FD:E1'),
+    (true, nextval('history_id_sequence'), 3.02, '2024-01-24 22:37:52.539065', '00:2A:E6:3E:FD:E1'),
+    (true, nextval('history_id_sequence'), 2.01, '2024-01-24 22:47:52.539065', '00:2A:E6:3E:FD:E1'),
+    (false, nextval('history_id_sequence'), 4.01, '2024-01-24 22:57:52.539065', '00:2A:E6:3E:FD:E1'),
+    (true, nextval('history_id_sequence'), 6.04, '2024-01-24 23:07:22.539065', '00:2A:E6:3E:FD:E1'),
+    (true, nextval('history_id_sequence'), 6.02, '2024-01-24 23:17:52.539065', '00:2A:E6:3E:FD:E1'),
+    (true, nextval('history_id_sequence'), 5.03, '2024-01-24 23:27:52.539065', '00:2A:E6:3E:FD:E1'),
 
     (false, nextval('history_id_sequence'), NULL, '2024-01-24 22:27:52.539065', '00:0A:E6:54:FA:A1'),
     (true, nextval('history_id_sequence'), NULL, '2024-01-24 22:37:52.539065', '00:0A:E6:54:FA:A1'),
