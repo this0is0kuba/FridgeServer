@@ -30,8 +30,8 @@ public class History {
     @Max(200)
     private Double temp;
 
-    @Column(name = "distance")
-    private Double distance;
+    @Column(name = "closed_door")
+    private Boolean closedDoor;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @Column(name = "date")
@@ -44,9 +44,9 @@ public class History {
 
     public History() {}
 
-    public History(Double temp, Double distance, LocalDateTime date) {
+    public History(Double temp, Boolean closedDoor, LocalDateTime date) {
         this.temp = temp;
-        this.distance = distance;
+        this.closedDoor = closedDoor;
         this.date = date;
     }
 
@@ -66,12 +66,12 @@ public class History {
         this.temp = temp;
     }
 
-    public Double getDistance() {
-        return distance;
+    public Boolean getClosedDoor() {
+        return closedDoor;
     }
 
-    public void setDistance(Double distance) {
-        this.distance = distance;
+    public void setClosedDoor(Boolean closedDoor) {
+        this.closedDoor = closedDoor;
     }
 
     public LocalDateTime getDate() {
@@ -95,7 +95,7 @@ public class History {
         return "History{" +
                 "id=" + id +
                 ", temp=" + temp +
-                ", distance=" + distance +
+                ", closedDoor=" + closedDoor +
                 ", date=" + date +
                 '}';
     }

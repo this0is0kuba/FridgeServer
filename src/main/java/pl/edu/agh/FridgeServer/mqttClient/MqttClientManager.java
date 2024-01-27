@@ -96,7 +96,7 @@ public class MqttClientManager {
 
         switch (subTopic) {
             case "temp" -> saveTemp(deviceId, Double.parseDouble(message));
-            case "distance" -> saveDistance(deviceId, Double.parseDouble(message));
+            case "door" -> saveInfoAboutDoor(deviceId, Boolean.parseBoolean(message));
             case "delete" -> deleteDevice(deviceId);
         }
     }
@@ -118,7 +118,7 @@ public class MqttClientManager {
         fridgeService.saveHistory(history);
     }
 
-    private void saveDistance(String deviceId, Double distance) {
+    private void saveInfoAboutDoor(String deviceId, Boolean closed_door) {
 
         Device device = fridgeService.findDeviceById(deviceId);
 
@@ -127,7 +127,7 @@ public class MqttClientManager {
 
         LocalDateTime localDateTime = LocalDateTime.now();
 
-        History history = new History(null, distance, localDateTime);
+        History history = new History(null, closed_door, localDateTime);
         history.setDevice(device);
 
         fridgeService.saveHistory(history);
