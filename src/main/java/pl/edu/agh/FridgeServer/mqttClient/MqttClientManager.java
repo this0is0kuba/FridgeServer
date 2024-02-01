@@ -98,11 +98,10 @@ public class MqttClientManager {
         Double temp = Double.parseDouble(data[0]);
         Boolean closedDoor = Boolean.parseBoolean(data[1]);
 
-        saveTemp(deviceId, temp);
-        saveInfoAboutDoor(deviceId, closedDoor);
+        saveInfo(deviceId, temp, closedDoor);
     }
 
-    private void saveTemp(String deviceId, Double temp) {
+    private void saveInfo(String deviceId, Double temp, Boolean closedDoor) {
 
         Device device = fridgeService.findDeviceById(deviceId);
 
@@ -111,22 +110,7 @@ public class MqttClientManager {
 
         LocalDateTime localDateTime = LocalDateTime.now();
 
-        History history = new History(temp, null, localDateTime);
-        history.setDevice(device);
-
-        fridgeService.saveHistory(history);
-    }
-
-    private void saveInfoAboutDoor(String deviceId, Boolean closed_door) {
-
-        Device device = fridgeService.findDeviceById(deviceId);
-
-        if(device == null)
-            return;
-
-        LocalDateTime localDateTime = LocalDateTime.now();
-
-        History history = new History(null, closed_door, localDateTime);
+        History history = new History(temp, closedDoor, localDateTime);
         history.setDevice(device);
 
         fridgeService.saveHistory(history);

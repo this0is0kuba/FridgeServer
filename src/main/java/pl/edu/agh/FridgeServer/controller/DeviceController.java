@@ -1,6 +1,5 @@
 package pl.edu.agh.FridgeServer.controller;
 
-import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,11 +32,11 @@ public class DeviceController {
     ) {
         Device device = fridgeService.findDeviceById(number);
 
-        if(device != null)
-            return ResponseEntity.status(403).body(null);
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userName = authentication.getName();
+
+        if(device != null && !device.getUser().getUserName().equals(userName))
+            return ResponseEntity.status(403).body(null);
 
         User user = fridgeService.findUserByUserName(userName);
 
